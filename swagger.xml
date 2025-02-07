@@ -1,0 +1,2 @@
+# Welcome to H-Base
+This repo is managed by Terraform.
