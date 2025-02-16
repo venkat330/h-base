@@ -1,0 +1,98 @@
+openapi: 3.0.0
+info:
+  title: Simple HTTP Server API
+  description: API for serving JSON and XML responses with basic health check.
+  version: 1.0.0
+servers:
+  - url: http://localhost:80
+    description: Local development server
+paths:
+  /health:
+    get:
+      summary: Health check endpoint
+      description: Returns a simple message indicating the server's health status.
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: "I'm doing great!"
+  /json:
+    get:
+      summary: Get JSON data
+      description: Retrieves the stored JSON data.
+      responses:
+        '200':
+          description: JSON response
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  status: true
+                  data:
+                    id: "FEFE"
+                    some_field: "some_field_data"
+    post:
+      summary: Store JSON data
+      description: Upload new JSON data to replace the stored one.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+      responses:
+        '200':
+          description: Data successfully stored
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: "I got your data"
+  /xml:
+    get:
+      summary: Get XML data
+      description: Retrieves the stored XML data.
+      responses:
+        '200':
+          description: XML response
+          content:
+            text/plain:
+              schema:
+                type: string
+                example: |
+                  <?xml version="1.0" encoding="utf-8"?>
+                  <status>True</status>
+                  <data>
+                    <id>FEFE</id>
+                    <some_field>some_field_data</some_field>
+                  </data>
+    post:
+      summary: Store XML data
+      description: Upload new XML data to replace the stored one.
+      requestBody:
+        required: true
+        content:
+          text/plain:
+            schema:
+              type: string
+      responses:
+        '200':
+          description: Data successfully stored
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: "I got your data"
