@@ -8,8 +8,8 @@ terraform {
 }
 
 provider "harness" {
-  account_id  = "buCifuwpTsScIrrKY-CBHw"
-  platform_api_key = "pat.buCifuwpTsScIrrKY-CBHw.67da8a73835a5b1a59a3fd3c.UsoUX7YQgaNAzkELmQDk"
+  account_id  = "ss"
+  platform_api_key = "ss"
 }
 resource "harness_platform_triggers" "github_pr_trigger" {
   identifier = "testpr"
@@ -119,4 +119,5 @@ resource "harness_platform_triggers" "github_pr_trigger" {
 #     inputYaml: |
 #       pipeline: {}
 #   EOT
-# }
+
+
